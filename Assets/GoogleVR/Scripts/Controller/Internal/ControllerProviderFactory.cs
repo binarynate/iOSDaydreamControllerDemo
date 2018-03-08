@@ -9,7 +9,7 @@
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
+// See the License for the specific language governing permissioßns and
 // limitations under the License.
 
 using UnityEngine;
@@ -31,6 +31,9 @@ namespace Gvr.Internal {
 #elif UNITY_ANDROID
       // Use the GVR C API.
       return new AndroidNativeControllerProvider();
+#elif UNITY_IOS && GVR_IOS_DAYDREAM_CONTROLLER_ENABLED
+      // Use the native iOS plugin.
+      return new iOSNativeControllerProvider();
 #else
       // Platform not supported.
       Debug.LogWarning("No controller support on this platform.");
